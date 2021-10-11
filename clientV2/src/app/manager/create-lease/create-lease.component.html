@@ -1,0 +1,113 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Create Lease</mat-card-title>
+    </mat-card-header>
+
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="registerForm">
+        <form class="example-form" [formGroup]="registerForm">
+          <ng-template matStepLabel>Basic Information</ng-template>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Room Number" formControlName="roomNumber">
+              <mat-error *ngIf="(submitted || f.roomNumber.dirty || f.roomNumber.touched) && f.roomNumber.errors?.required">Room Number is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Party A" formControlName="partyA">
+              <mat-error *ngIf="(submitted || f.partyA.dirty || f.partyA.touched) && f.partyA.errors?.required">Party A is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Party B" formControlName="partyB">
+              <mat-error *ngIf="(submitted || f.partyB.dirty || f.partyB.touched) && f.partyB.errors?.required">Party B is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Rent" formControlName="rent">
+              <mat-error *ngIf="(submitted || f.rent.dirty || f.rent.touched) && f.rent.errors?.required">Rent is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Deposit" formControlName="deposit">
+              <mat-error *ngIf="(submitted || f.deposit.dirty || f.deposit.touched) && f.deposit.errors?.required">Deposit is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput [min]="minDate" [max]="f.leaseEndDate.value" [matDatepicker]="picker" placeholder="Lease Start Date" formControlName="leaseStartDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="(submitted || f.leaseStartDate.dirty || f.leaseStartDate.touched) && f.leaseStartDate.errors?.required">Lease Starting Date is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput [min]="f.leaseStartDate.value" [max]="maxDate" [matDatepicker]="picker2" placeholder="Lease End Date" formControlName="leaseEndDate">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+              <mat-error *ngIf="(submitted || f.leaseEndDate.dirty || f.leaseEndDate.touched) && f.leaseEndDate.errors?.required">Lease Ending Date is required</mat-error>
+            </mat-form-field>
+
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="employmentLetterForm">
+        <form class="example-form" [formGroup]="employmentLetterForm">
+          <ng-template matStepLabel>Employment Letter</ng-template>
+          <div class="example-full-width">
+            <label>Choose File</label><br>
+            <input type="file" formControlName="employmentLetter" (change)="handleFileInput($event.target.files, 'employmentLetterForm')">
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="BankStatementForm">
+        <form class="example-form" [formGroup]="BankStatementForm">
+          <ng-template matStepLabel>Bank Statement</ng-template>
+          <div class="example-full-width">
+            <label>Choose File</label><br>
+            <input type="file" formControlName="bankStatement" (change)="handleFileInput($event.target.files, 'BankStatementForm')">
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="taxFromForm">
+      <form class="example-form" [formGroup]="taxFromForm">
+        <ng-template matStepLabel>Tax Form</ng-template>
+        <div class="example-full-width">
+          <label>Choose File</label><br>
+          <input type="file" formControlName="taxFrom" (change)="handleFileInput($event.target.files, 'taxFromForm')">
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="photoIdentificationForm">
+      <form class="example-form" [formGroup]="photoIdentificationForm">
+        <ng-template matStepLabel>Photo Identification</ng-template>
+        <div class="example-full-width">
+          <label>Choose File</label><br>
+          <input type="file" formControlName="photoIdentification" (change)="handleFileInput($event.target.files, 'photoIdentificationForm')">
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="leaseCopyForm">
+      <form class="example-form" [formGroup]="leaseCopyForm">
+        <ng-template matStepLabel>Lease Copy</ng-template>
+        <div class="example-full-width">
+          <label>Choose File</label><br>
+          <input type="file" formControlName="leaseCopy" (change)="handleFileInput($event.target.files, 'leaseCopyForm')">
+        </div>
+      </form>
+    </mat-step>
+
+    </mat-vertical-stepper>
+
+    <button mat-stroked-button color="accent" class="btn-block" (click)="onSubmit()">Register</button>
+  </mat-card>
+</div>

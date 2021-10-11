@@ -1,0 +1,14 @@
+<div style="display: block" *ngIf="chartDatasets !== null">
+  <canvas mdbChart
+          [chartType]="chartType"
+          [datasets]="chartDatasets"
+          [labels]="chartLabels"
+          [colors]="chartColors"
+          [options]="chartOptions"
+          [legend]="true"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+  </canvas>
+</div>
+
+<button mat-stroked-button color="accent" class="btn-block" (click)="addPenalty()">Add Penalty Fee</button>

@@ -1,0 +1,40 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box" *ngIf="userValue !== null">
+    <mat-card-header>
+      <mat-card-title>Edit My Information</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <mat-select formControlName="title">
+            <mat-option [value]="title" *ngFor="let title of Titles">{{title}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="(submitted || f.title.dirty || f.title.touched) && f.title.errors?.required">Title is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="First Name" formControlName="firstName">
+          <mat-error *ngIf="(submitted || f.firstName.dirty) && f.firstName.errors?.required">First Name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="Last Name" formControlName="lastName">
+          <mat-error *ngIf="(submitted || f.lastName.dirty || f.lastName.touched) && f.lastName.errors?.required">Last Name is required</mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Edit</button>
+
+    </form>
+  </mat-card>
+</div>

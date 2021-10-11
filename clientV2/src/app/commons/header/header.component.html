@@ -1,0 +1,178 @@
+<!--<mdb-navbar SideClass="navbar navbar-expand-lg  navbar-light blue-grey lighten-5">-->
+
+<!--  <mdb-navbar-brand *ngIf="!check">-->
+<!--    <a class="navbar-brand" routerLink="/home">HOA System</a>-->
+<!--  </mdb-navbar-brand>-->
+
+<!--  <div *ngIf="check">-->
+<!--    <ul class="navbar-nav mr-auto" *ngIf="userValue.userType === 'Renter'">-->
+<!--      <mdb-navbar-brand><a class="navbar-brand" routerLink="/home">Residence</a></mdb-navbar-brand>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect>My Mail/Package</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect routerLink="/users/schedule-service">Schedule a Service</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect>Schedule a Move In/Move Out</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect routerLink="/users/payment">My Rent</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect routerLink="/users/service-list">My Service Schedule</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+
+<!--    <ul class="navbar-nav mr-auto" *ngIf="userValue.userType === 'Staff'">-->
+<!--      <mdb-navbar-brand><a class="navbar-brand" routerLink="/home">Staff</a></mdb-navbar-brand>-->
+<!--      <li class="nav-item dropdown" dropdown>-->
+<!--        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>-->
+<!--          Post Mail/Package<span class="caret"></span></a>-->
+<!--        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
+<!--          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Post package</a>-->
+<!--          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Post mail</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect routerLink="/staff/maintenance-list">Maintenance List</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect routerLink="/staff/my-maintenance-list">My Maintenance List</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect>Move In/Move Out Schedule</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+
+<!--    <ul class="navbar-nav mr-auto" *ngIf="userValue.userType === 'Manager'">-->
+<!--      <mdb-navbar-brand><a class="navbar-brand" routerLink="/home">Manager</a></mdb-navbar-brand>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect>Rent Collection</a>-->
+<!--      </li>-->
+
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link waves-light" mdbWavesEffect routerLink="/manager/get-room">Room List</a>-->
+<!--      </li>-->
+
+<!--      <li class="nav-item dropdown" dropdown>-->
+<!--        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>-->
+<!--          Room<span class="caret"></span></a>-->
+<!--        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
+<!--          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/manager/create-room">Creation</a>-->
+<!--          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/manager/search-room">Search</a>-->
+<!--          &lt;!&ndash;          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/manager/edit-room">Edit</a>&ndash;&gt;-->
+<!--        </div>-->
+<!--      </li>-->
+
+<!--      <li class="nav-item dropdown" dropdown>-->
+<!--        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>-->
+<!--          Lease<span class="caret"></span></a>-->
+<!--        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
+<!--          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/manager/create-lease">Creation</a>-->
+<!--          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/manager/edit-lease">Edit</a>-->
+<!--          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="#">Renew</a>-->
+<!--          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="#">Cancel</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+
+<!--  <ul class="navbar-nav ml-auto nav-flex-icons">-->
+<!--    <li *ngIf="userValue == null">-->
+<!--      <a class="nav-link" mdbWavesEffect routerLink="/users/login">Login</a>-->
+<!--    </li>-->
+
+<!--    <li *ngIf="userValue != null" class="nav-item avatar dropdown" dropdown>-->
+<!--      <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">-->
+<!--        <igx-avatar [src]="getIconURL()"-->
+<!--                    roundShape="true"-->
+<!--                    size="small">-->
+<!--        </igx-avatar>-->
+<!--      </a>-->
+
+<!--      <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">-->
+<!--        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/users/user-info">My Information</a>-->
+<!--        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/users/change-email">Change my email address</a>-->
+<!--        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/users/change-password">Change my password</a>-->
+<!--        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/users/lease-info" *ngIf="userValue.userType === 'Renter'">My Lease</a>-->
+<!--        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/home" *ngIf="userValue.userType !== 'Renter'">My Working Period</a>-->
+<!--        <div class="divider dropdown-divider"></div>-->
+<!--        <button class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log Out</button>-->
+<!--      </div>-->
+<!--    </li>-->
+<!--  </ul>-->
+
+<!--</mdb-navbar>-->
+
+
+<div class="navbar-sample">
+  <igx-navbar title="HENRY HALL" actionButtonIcon="menu" [isActionButtonVisible]="true">
+    <igx-action-icon>
+      <igx-icon class="customIcon" fontSet="fa" name="fa-home" igxToggleAction="navigation"></igx-icon>
+    </igx-action-icon>
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li *ngIf="userValue == null">
+        <a class="nav-link" mdbWavesEffect routerLink="/users/login">Login</a>
+      </li>
+
+      <li *ngIf="userValue != null" class="nav-item avatar dropdown" [igxToggleAction]="dropdown" [igxDropDownItemNavigation]="dropdown" [igxToggleOutlet]="outlet" [overlaySettings]="overlaySettings">
+        <div class="overlayOutlet" igxOverlayOutlet #outlet="overlay-outlet"></div>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">
+          <igx-avatar [src]="getIconURL()"
+                      roundShape="true"
+                      size="small">
+          </igx-avatar>
+        </a>
+        <igx-drop-down #dropdown class="dropdown-menu dropdown-menu-right">
+          <igx-drop-down-item>
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/users/user-info">My Information</a>
+          </igx-drop-down-item>
+          <igx-drop-down-item>
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/users/reset-password">Change my password</a>
+          </igx-drop-down-item>
+          <igx-drop-down-item *ngIf="userValue.userType === 'Renter'">
+            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/users/lease-info">My Lease</a>
+          </igx-drop-down-item>
+          <igx-divider></igx-divider>
+          <igx-drop-down-item>
+            <button class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log Out</button>
+          </igx-drop-down-item>
+        </igx-drop-down>
+      </li>
+    </ul>
+  </igx-navbar>
+
+
+  <div class="main" igxLayout>
+
+    <igx-nav-drawer id="navigation" [isOpen]="drawerState.open" [(pin)]="drawerState.pin">
+      <ng-template igxDrawer>
+        <nav>
+          <span igxDrawerItem [isHeader]="true">
+            <a routerLink="/home">Navigation</a>
+          </span>
+          <span *ngFor="let item of navItems" igxDrawerItem [active]="item.text === selected" igxRipple (click)="navigate(item)">
+            <igx-icon fontSet="material" [matBadge]="unpickedPackage.length" matBadgeColor="warn" [matBadgeHidden]="item.check">{{ item.name }}</igx-icon>
+            <span>{{ item.text }}</span>
+          </span>
+        </nav>
+      </ng-template>
+
+      <ng-template igxDrawerMini *ngIf="drawerState.miniTemplate">
+        <nav>
+        <span *ngFor="let item of navItems" igxDrawerItem [active]="item.text === selected" igxRipple (click)="navigate(item)">
+          <igx-icon fontSet="material" [matBadge]="unpickedPackage.length" matBadgeColor="warn" [matBadgeHidden]="item.check">{{ item.name }}</igx-icon>
+        </span>
+        </nav>
+      </ng-template>
+    </igx-nav-drawer>
+
+    <main igxFlex [class.mini-padding]="!drawerState.pin && drawerState.miniTemplate" [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </main>
+  </div>
+</div>
+
+

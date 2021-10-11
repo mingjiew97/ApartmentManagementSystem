@@ -1,0 +1,41 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Post Package</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="Room Number" formControlName="roomNumber" (change)="getUserList()">
+          <mat-error *ngIf="(submitted || f.roomNumber.dirty || f.roomNumber.touched) && f.roomNumber.errors?.required">Room Number is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" *ngIf="f.roomNumber.value !== ''">
+          <mat-label>Residence Name</mat-label>
+          <mat-select formControlName="renterId">
+            <mat-option>None</mat-option>
+            <mat-option [value]="residence.username" *ngFor="let residence of residenceList">{{residence.firstName}} {{residence.lastName}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="(submitted || f.renterId.dirty || f.renterId.touched) && f.renterId.errors?.required">Please Select A Residence</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="Tracking Number" formControlName="trackingNumber">
+          <mat-error *ngIf="(submitted || f.trackingNumber.dirty || f.trackingNumber.touched) && f.trackingNumber.errors?.required">Package Tracking Number is required</mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Register</button>
+
+    </form>
+  </mat-card>
+</div>

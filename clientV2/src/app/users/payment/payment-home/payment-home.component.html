@@ -1,0 +1,66 @@
+<!--<div counto [step]="30" [countTo]="100" [countFrom]="0" [duration]="4" (countoChange)="counto = $event">-->
+<!--  <p style="font-size:100px">-->
+<!--    {{counto}}-->
+<!--  </p>-->
+<!--</div>-->
+<div *ngIf="room !== null && room.remainedBalance !== 0" class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Your Account Balance is</mat-card-title>
+    </mat-card-header>
+    <br>
+    <div counto [step]="30" [countTo]="room.remainedBalance" [countFrom]="0" [duration]="4" (countoChange)="counto = $event">
+      <p style="font-size:60px; color:black" *ngIf="counto < 500">
+        <span>&#36;</span>{{counto | number:'1.0-0'}}
+      </p>
+      <p style="font-size:60px; color:green" *ngIf="499 < counto && counto < 1000">
+        <span>&#36;</span>{{counto | number:'1.0-0'}}
+      </p>
+      <p style="font-size:60px; color:orange" *ngIf="999 < counto && counto < 1500">
+        <span>&#36;</span>{{counto | number:'1.0-0'}}
+      </p>
+      <p style="font-size:60px; color:darkred" *ngIf="1499 < counto && counto < 2000">
+        <span>&#36;</span>{{counto | number:'1.0-0'}}
+      </p>
+      <p style="font-size:60px; color:red" *ngIf="1999 < counto">
+        <span>&#36;</span>{{counto | number:'1.0-0'}}
+      </p>
+    </div>
+    <br>
+
+
+    <mat-card-content>
+      <mat-radio-group [(ngModel)]="paymentType">
+        <mat-radio-button class="example-margin" value="card">Credit Card   </mat-radio-button>
+        <mat-radio-button class="example-margin" value="bank">Bank Checking Account</mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+
+
+    <mat-card-content>
+      <mat-form-field class="example-full-width" >
+        <input matInput type="number" placeholder="PayAmount" [(ngModel)]="amount" required>
+        <mat-error>Please enter a Valid Payment Amount!</mat-error>
+      </mat-form-field>
+
+      <button mat-stroked-button color="accent" class="btn-block" (click)="pay()">Pay</button>
+      <p *ngIf="paymentType === 'card'" style="font-size:13px; color:red">An additional 3% of service fee will be chagrged.</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" *ngIf="room !== null && room.remainedBalance === 0">
+  <mat-card class="box">
+    <div class="pyro">
+      <div class="before"></div>
+      <p>
+        <span style="font-size:50px" class="rainbow">Congratulations!</span>
+      </p>
+      <p>
+        <span style="font-size:30px" class="rainbow">Your are paid in full!</span>
+      </p>
+      <div class="after"></div>
+    </div>
+  </mat-card>
+</div>
+

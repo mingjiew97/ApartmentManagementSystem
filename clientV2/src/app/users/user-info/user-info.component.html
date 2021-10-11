@@ -1,0 +1,56 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>My Information</mat-card-title>
+    </mat-card-header>
+    <br>
+
+    <div *ngIf="userValue !== null">
+
+      <form class="example-form">
+        <mat-label>User Type</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="userValue.userType" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>Title</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="userValue.title" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>First Name</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="userValue.firstName" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>Last Name</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="userValue.lastName" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>Room Number</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="userValue.roomNumber" readonly>
+        </label>
+      </form>
+
+      <a mat-stroked-button color="accent" class="btn-block" routerLink="/users/edit-user-info">Edit</a>
+    </div>
+
+  </mat-card>
+
+
+</div>

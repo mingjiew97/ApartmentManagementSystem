@@ -1,0 +1,27 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Finish Message</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="Message To Renter" formControlName="finishedMessage">
+          <mat-error *ngIf="(submitted || f.finishedMessage.dirty || f.finishedMessage.touched) && f.finishedMessage.errors?.required">Message to Renter is required</mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Finish</button>
+
+    </form>
+  </mat-card>
+</div>

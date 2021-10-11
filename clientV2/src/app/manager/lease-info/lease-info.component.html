@@ -1,0 +1,71 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Lease Information</mat-card-title>
+    </mat-card-header>
+
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="registerForm">
+        <ng-template matStepLabel>Basic Information</ng-template>
+
+        <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <mat-card-content>
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Room Number" formControlName="roomNumber" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Party A" formControlName="partyA" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Party B" formControlName="partyB" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Rent" formControlName="rent" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input class="form-control" matInput placeholder="Deposit" formControlName="deposit" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput [min]="minDate" [max]="f.leaseEndDate.value" [matDatepicker]="picker" placeholder="Lease Start Date" formControlName="leaseStartDate" readonly>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput [min]="f.leaseStartDate.value" [max]="maxDate" [matDatepicker]="picker2" placeholder="Lease End Date" formControlName="leaseEndDate" readonly>
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+          </mat-card-content>
+        </form>
+
+      </mat-step>
+
+      <mat-step *ngIf="userValue !== null && userValue.userType !== 'Renter'">
+        <ng-template matStepLabel>Documents</ng-template>
+        <div>
+          <a href="{{employmentLetter}}" *ngIf="employmentLetter !== null">Employment Letter</a><br>
+          <a href="{{bankStatement}}" *ngIf="bankStatement !== null">Bank Statement</a><br>
+          <a href="{{taxForm}}" *ngIf="taxForm !== null">Tax Form</a><br>
+          <a href="{{photoIdentification}}" *ngIf="photoIdentification !== null">Photo Identification</a><br>
+          <a href="{{leaseCopy}}" *ngIf="leaseCopy !== null">Lease Copy</a><br>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+    <button *ngIf="userValue !== null && userValue.userType !== 'Renter'" mat-stroked-button color="accent" class="btn-block" (click)="editLease()">Edit Lease</button>
+
+
+  </mat-card>
+</div>

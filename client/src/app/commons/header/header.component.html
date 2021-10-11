@@ -1,0 +1,111 @@
+<header class="header-user-dropdown">
+
+  <div class="header-limiter">
+    <h1><a href="#"><span>Header</span></a></h1>
+
+    <nav>
+      <a routerLink="/payment">Rent</a>
+      <a href="#">Service</a>
+      <a href="#">Mail</a>
+      <a href="#">Package <span class="header-new-feature">new</span></a>
+      <a href="#">My Lease</a>
+      <a href="#">My Status</a>
+      <a routerLink="/users/user-info"> User Info</a>
+    </nav>
+
+    <a class="nav-link" routerLink="/users/login">Login</a>
+    <div *ngIf="userValue != null">
+      <button (click)="logout()">LogOut</button>
+    </div>
+
+    <ul class="navbar-nav align-items-center d-none d-md-flex">
+      <li class="nav-item" ngbDropdown placement="bottom-right">
+        <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+          <div class="media align-items-center">
+            <span class="avatar avatar-sm rounded-circle">
+              <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg">
+            </span>
+            <div class="media-body ml-2 d-none d-lg-block">
+              <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+            </div>
+          </div>
+        </a>
+        <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+          <div class=" dropdown-header noti-title">
+            <h6 class="text-overflow m-0">Welcome!</h6>
+          </div>
+          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+            <i class="ni ni-single-02"></i>
+            <span>My profile</span>
+          </a>
+          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+            <i class="ni ni-settings-gear-65"></i>
+            <span>Settings</span>
+          </a>
+          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+            <i class="ni ni-calendar-grid-58"></i>
+            <span>Activity</span>
+          </a>
+          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+            <i class="ni ni-support-16"></i>
+            <span>Support</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#!" class="dropdown-item">
+            <i class="ni ni-user-run"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+</header>
+
+
+<!--<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">-->
+<!--  <div class="container-fluid">-->
+<!--    &lt;!&ndash; User &ndash;&gt;-->
+<!--    <ul class="navbar-nav align-items-center d-none d-md-flex">-->
+<!--      <li class="nav-item" ngbDropdown placement="bottom-right">-->
+<!--        <a class="nav-link pr-0" role="button" ngbDropdownToggle>-->
+<!--          <div class="media align-items-center">-->
+<!--            <span class="avatar avatar-sm rounded-circle">-->
+<!--              <img alt="Image placeholder" src="https://msi-final-mingjie-resources.s3.us-east-2.amazonaws.com/pokemon.jpeg">-->
+<!--            </span>-->
+<!--            <div class="media-body ml-2 d-none d-lg-block">-->
+<!--              <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>-->
+<!--          <div class=" dropdown-header noti-title">-->
+<!--            <h6 class="text-overflow m-0">Welcome!</h6>-->
+<!--          </div>-->
+<!--          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">-->
+<!--            <i class="ni ni-single-02"></i>-->
+<!--            <span>My profile</span>-->
+<!--          </a>-->
+<!--          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">-->
+<!--            <i class="ni ni-settings-gear-65"></i>-->
+<!--            <span>Settings</span>-->
+<!--          </a>-->
+<!--          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">-->
+<!--            <i class="ni ni-calendar-grid-58"></i>-->
+<!--            <span>Activity</span>-->
+<!--          </a>-->
+<!--          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">-->
+<!--            <i class="ni ni-support-16"></i>-->
+<!--            <span>Support</span>-->
+<!--          </a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a href="#!" class="dropdown-item">-->
+<!--            <i class="ni ni-user-run"></i>-->
+<!--            <span>Logout</span>-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->

@@ -1,0 +1,66 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <main>
+    <section class="container-lg">
+
+      <div class="cell example example5">
+        <form>
+          <div id="example5-paymentRequest">
+          </div>
+          <fieldset>
+            <legend class="card-only" data-tid="elements_examples.form.pay_with_card">Pay With Checking Account</legend>
+            <div class="row">
+              <div class="field">
+                <label for="example5-name" data-tid="elements_examples.form.name_label">accountNumber</label>
+                <input id="example5-name" data-tid="elements_examples.form.name_placeholder" class="input" type="number" required="" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="example5-email" data-tid="elements_examples.form.email_label">accountHolderName</label>
+                <input id="example5-email" data-tid="elements_examples.form.email_placeholder" class="input" type="text" required="">
+              </div>
+            </div>
+              <div class="field">
+                <label for="example5-phone" data-tid="elements_examples.form.phone_label">routingNumber</label>
+                <input id="example5-phone" data-tid="elements_examples.form.phone_placeholder" class="input" type="number" required="">
+              </div>
+<!--            </div>-->
+<!--            <div data-locale-reversible>-->
+<!--              <div class="row">-->
+<!--                <div class="field">-->
+<!--                  <label for="example5-address" data-tid="elements_examples.form.address_label">Address</label>-->
+<!--                  <input id="example5-address" data-tid="elements_examples.form.address_placeholder" class="input" type="text" required="">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="row" data-locale-reversible>-->
+<!--                <div class="field">-->
+<!--                  <label for="example5-city" data-tid="elements_examples.form.city_label">City</label>-->
+<!--                  <input id="example5-city" data-tid="elements_examples.form.city_placeholder" class="input" type="text" required="">-->
+<!--                </div>-->
+<!--                <div class="field">-->
+<!--                  <label for="example5-state" data-tid="elements_examples.form.state_label">State</label>-->
+<!--                  <input id="example5-state" data-tid="elements_examples.form.state_placeholder" class="input empty" type="text" required="">-->
+<!--                </div>-->
+<!--                <div class="field">-->
+<!--                  <label for="example5-zip" data-tid="elements_examples.form.postal_code_label">ZIP</label>-->
+<!--                  <input id="example5-zip" data-tid="elements_examples.form.postal_code_placeholder" class="input empty" type="text" required="">-->
+<!--                </div>-->
+<!--              </div>-->
+            <mat-checkbox (change)="changeChecked()">
+              <span style="color: white; ">Set as My Default Rent Paying Method</span>
+            </mat-checkbox>
+
+            <button type="submit" data-tid="elements_examples.form.pay_button" (click)="pay()">Pay {{payAmount}}
+              <span></span>
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>

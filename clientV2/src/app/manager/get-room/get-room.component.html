@@ -1,0 +1,76 @@
+<h2>Room List</h2>
+<div class="mat-elevation-z8" >
+
+  <div (click)="ngOnInit()">
+    <mat-radio-group [(ngModel)]="roomStatus">
+      <mat-radio-button class="example-margin" value="all">All</mat-radio-button>
+      <mat-radio-button class="example-margin" value="vacant">Vacant</mat-radio-button>
+      <mat-radio-button class="example-margin" value="bookedOrOccupied">Booked Or Occupied</mat-radio-button>
+      <mat-radio-button class="example-margin" value="unPaid">Unpaid renters</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="General Search">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+    <ng-container matColumnDef="roomNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Room Number</th>
+      <td mat-cell *matCellDef="let room">
+        <button (click)="roomInfo(room.roomNumber)">{{room.roomNumber}}</button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomType">
+      <th mat-header-cell *matHeaderCellDef>Room Type</th>
+      <td mat-cell *matCellDef="let room"> {{room.roomType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomArea">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Room Area</th>
+      <td mat-cell *matCellDef="let room"> {{room.roomArea}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let room"> {{room.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Rent</th>
+      <td mat-cell *matCellDef="let room"> {{room.rent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deposit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Deposit</th>
+      <td mat-cell *matCellDef="let room"> {{room.deposit}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="remainedBalance">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Balance</th>
+      <td mat-cell *matCellDef="let room"> {{room.remainedBalance}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="leaseEndDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lease End Date</th>
+      <td mat-cell *matCellDef="let room"> {{room.leaseEndDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="operations">
+      <th mat-header-cell *matHeaderCellDef>operations</th>
+      <td mat-cell *matCellDef="let room">
+        <button mat-button (click)="editRoom(room.roomNumber)">Edit Room</button>
+        <button mat-button (click)="leaseInfo(room.roomNumber)" *ngIf="room.leaseId !== 0">Lease Information</button>
+<!--        <button mat-button (click)="editLease(room.roomNumber)" *ngIf="room.leaseId !== 0">Edit Lease</button>-->
+        <button mat-button (click)="cancelLease(room.leaseId, room)" *ngIf="room.leaseId !== 0">Cancel Lease</button>
+        <button mat-button (click)="createLease(room.roomNumber)" *ngIf="room.leaseId === 0">Create Lease</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

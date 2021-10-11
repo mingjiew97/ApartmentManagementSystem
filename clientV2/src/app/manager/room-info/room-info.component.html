@@ -1,0 +1,55 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Room Information</mat-card-title>
+    </mat-card-header>
+    <br>
+
+    <div>
+      <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'">
+        <mdb-carousel-item *ngFor="let url of pictureSrc">
+          <div class="view">
+            <img class="d-block" [src]=url alt="First slide">
+            <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+          </div>
+        </mdb-carousel-item>
+      </mdb-carousel>
+    </div>
+
+    <div *ngIf="room !== null">
+
+      <form class="example-form">
+        <mat-label>Room Number</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="room.roomNumber" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>Room Area (square foot)</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="room.roomArea" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>Room Type</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="room.roomType" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>Status</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="room.status" readonly>
+        </label>
+      </form>
+
+      <a mat-stroked-button color="accent" class="btn-block" routerLink="/manager/edit-room" *ngIf="userValue !== null && userValue.userType !== 'Renter'">Edit</a>
+    </div>
+
+  </mat-card>
+
+</div>

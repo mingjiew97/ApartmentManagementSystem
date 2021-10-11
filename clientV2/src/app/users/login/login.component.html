@@ -1,0 +1,42 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Sign in</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" ngForm #LogInForm="ngForm" (ngSubmit)="login(LogInForm.value)">
+      <mat-card-content>
+        <mat-form-field class="example-full-width" >
+          <input matInput placeholder="Email" ngModel name="username" required>
+          <mat-error>Email is required!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput placeholder="Password" ngModel name="password" required>
+          <mat-error>Password is required!</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+
+      <label class="checkbox pull-left">
+        <input type="checkbox" value="remember-me">
+        Remember me
+      </label>
+
+      <a routerLink="/help" class="pull-right need-help">Need help?</a><span class="clearfix"></span>
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Sign in</button>
+
+      <br>
+      <label>Not a member?
+        <a routerLink="/users/register" class="text-center new-account">Create an account</a>
+      </label>
+      <br>
+      <a routerLink="/users/change-password" class="pull-right need-help">Forget Password</a><span class="clearfix"></span>
+    </form>
+  </mat-card>
+
+</div>

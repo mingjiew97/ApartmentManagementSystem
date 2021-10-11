@@ -1,0 +1,43 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Edit Room {{roomNumber}}</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="Room Area" formControlName="roomType" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="Room Area" formControlName="roomArea" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="Deposit" formControlName="deposit">
+          <mat-error *ngIf="(submitted || f.deposit.dirty || f.deposit.touched) && f.deposit.errors?.required">Deposit Amount is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Room Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option [value]="status" *ngFor="let status of roomStatus">{{status}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="(submitted || f.status.dirty || f.status.touched) && f.status.errors?.required">Room Status is required</mat-error>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Edit</button>
+
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,47 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>My Information</mat-card-title>
+    </mat-card-header>
+    <br>
+
+    <div *ngIf="userValue !== null">
+
+      <form class="example-form">
+        <mat-label>Type</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="type" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>Status</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="status" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>Start Time</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="startTime" readonly>
+        </label>
+      </form>
+
+      <form class="example-form">
+        <mat-label>End Time</mat-label>
+        <label class="example-full-width">
+          <input class="form-control" [value]="endTime" readonly>
+        </label>
+      </form>
+    </div>
+
+  </mat-card>
+
+
+</div>

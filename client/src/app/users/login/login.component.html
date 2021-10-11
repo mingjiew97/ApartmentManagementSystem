@@ -1,0 +1,33 @@
+<script src="login.component.ts"></script>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <h1 class="text-center login-title">Sign in to continue</h1>
+      <div class="account-wall">
+        <img class="profile-img" src="https://www.pokemon-sunmoon.com/media/uploads/april_2017/pokemon-detail.png">
+        <form class="form-signin" ngForm #LogInForm="ngForm" (ngSubmit)="login(LogInForm.value)">
+
+          <div>
+            <input type="text" class="form-control" ngModel name="username" placeholder="Email" required autofocus>
+<!--            <mat-error class="error-mesasage-format" *ngIf="email.invalid">{{errorMessage()}}</mat-error>-->
+          </div>
+
+          <div>
+            <input type="text" class="form-control" ngModel name="password" placeholder="Password" required autofocus>
+          </div>
+
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+          <label class="checkbox pull-left">
+            <input type="checkbox" value="remember-me">
+            Remember me
+          </label>
+
+          <a routerLink="/commons/help" class="pull-right need-help">Need help?</a><span class="clearfix"></span>
+
+        </form>
+      </div>
+      <a routerLink="/users/register" class="text-center new-account">Create an account</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Schedule Service</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <mat-card-content *ngIf="serviceValue !== null">
+
+        <mat-form-field class="example-full-width" *ngIf="userValue.userType === 'Renter'">
+          <input class="form-control" matInput placeholder="Status" formControlName="status" readonly>
+          <mat-error *ngIf="(submitted || f.status.dirty) && f.status.errors?.required">Status is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput [matDatepicker]="picker0" placeholder="Service Date" formControlName="serviceDate" [min]="minDate" [max]="maxDate">
+          <mat-datepicker-toggle matSuffix [for]="picker0"></mat-datepicker-toggle>
+          <mat-datepicker #picker0></mat-datepicker>
+          <mat-error *ngIf="(submitted || f.serviceDate.dirty || f.serviceDate.touched) && f.serviceDate.errors?.required">Service Date is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="what's happening?" formControlName="information">
+          <mat-error *ngIf="(submitted || f.information.dirty || f.information.touched) && f.information.errors?.required">Information about where needs to be fixed is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Available From" [ngxTimepicker]="fullTime" formControlName="preferableStartTime" [max]="f.preferableEndTime.value">
+          <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+          <mat-error *ngIf="(submitted || f.preferableStartTime.dirty || f.preferableStartTime.touched) && f.preferableStartTime.errors?.required">Preferable Start Time is required!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="f.preferableStartTime.value !== null">
+          <input matInput placeholder="To" [ngxTimepicker]="fullTime2" formControlName="preferableEndTime" [min]="f.preferableStartTime.value">
+          <ngx-material-timepicker #fullTime2></ngx-material-timepicker>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Edit</button>
+
+    </form>
+  </mat-card>
+</div>
+

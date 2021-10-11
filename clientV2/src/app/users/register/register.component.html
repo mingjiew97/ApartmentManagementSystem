@@ -1,0 +1,76 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <mat-select formControlName="title">
+            <mat-option [value]="title" *ngFor="let title of Titles">{{title}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="(submitted || f.title.dirty || f.title.touched) && f.title.errors?.required">Title is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="First Name" formControlName="firstName">
+          <mat-error *ngIf="(submitted || f.firstName.dirty || f.firstName.touched) && f.firstName.errors?.required">First Name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input class="form-control" matInput placeholder="Last Name" formControlName="lastName">
+          <mat-error *ngIf="(submitted || f.lastName.dirty || f.lastName.touched) && f.lastName.errors?.required">Last Name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput class="form-control" placeholder="Email (it will be used as your future log in username)" formControlName="username">
+          <mat-error *ngIf="(submitted || f.username.dirty || f.username.touched) && f.username.errors?.required">Email is required</mat-error>
+          <mat-error *ngIf="(submitted || f.username.dirty || f.username.touched) && f.username.errors?.email">Email must be a valid email address</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput class="form-control" placeholder="Password" formControlName="password">
+          <mat-error *ngIf="(submitted || f.password.dirty || f.password.touched) && f.password.errors?.required">Password is required</mat-error>
+          <mat-error *ngIf="(submitted || f.password.dirty || f.password.touched) && f.password.errors?.minlength">Password must be at least 6 characters</mat-error>
+        </mat-form-field>
+
+<!--        <mat-form-field class="example-full-width">-->
+<!--          <input matInput class="form-control" placeholder="Confirm Your Password" formControlName="confirmPassword">-->
+<!--          <mat-error *ngIf="(submitted || f.confirmPassword.dirty || f.confirmPassword.touched) && f.confirmPassword.errors?.required">Please Confirm Your Password</mat-error>-->
+<!--          <mat-error *ngIf="(submitted || f.confirmPassword.dirty || f.confirmPassword.touched) && f.confirmPassword.errors?.minlength">Password does not match</mat-error>-->
+<!--        </mat-form-field>-->
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Choose a role...</mat-label>
+          <mat-select formControlName="userType">
+            <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="(submitted || f.userType.dirty || f.userType.touched) && f.userType.errors?.required">User Role is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" *ngIf="f.userType.value === 'Renter'">
+          <input matInput class="form-control" placeholder="Room Number" formControlName="roomNumber">
+          <mat-error *ngIf="(submitted || f.roomNumber.dirty || f.roomNumber.touched) && f.roomNumber.errors?.required">Room Number is required</mat-error>
+        </mat-form-field>
+
+<!--        <div class="example-full-width">-->
+<!--          <label>Choose File</label><br>-->
+<!--          <input type="file" formControlName="img" (change)="handleFileInput($event.target.files)">-->
+<!--        </div>-->
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block" type="submit">Register</button>
+
+    </form>
+  </mat-card>
+</div>

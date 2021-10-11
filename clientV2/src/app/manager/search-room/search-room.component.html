@@ -1,0 +1,70 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center"
+     [ngStyle]="{
+     'background-image': getBackGroundImage(), 'background-repeat': 'no-repeat', 'background-position' : 'center',
+     'background-size' : 'cover', 'min-height' : '100vh', 'font-family' : 'Roboto'
+     }">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Search Room</mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field>
+      <mat-label>Search method</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option value="roomNumber">Room Number</mat-option>
+        <mat-option value="roomType">Room Type</mat-option>
+        <mat-option value="status">Room Status</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="selected === 'roomNumber'">
+      <form class="example-form" ngForm #LogInForm="ngForm" (ngSubmit)="search(LogInForm.value)">
+        <mat-card-content>
+          <mat-form-field class="example-full-width" >
+            <input matInput placeholder="Room Number" ngModel name="roomNumber" required>
+            <mat-error>Room Number is required!</mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block" type="submit">Search</button>
+      </form>
+    </div>
+
+    <div *ngIf="selected === 'roomType'">
+      <form (ngSubmit)="searchByType()">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <mat-label>Search by Room Type</mat-label>
+            <mat-select [(value)]="roomTypeValue">
+              <mat-option value="Studio">Studio</mat-option>
+              <mat-option value="1B1B">1B1B</mat-option>
+              <mat-option value="2B1B">2B1B</mat-option>
+              <mat-option value="2B2B">2B2B</mat-option>
+              <mat-option value="4B2B">4B2B</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block" type="submit">Search</button>
+      </form>
+    </div>
+
+    <div *ngIf="selected === 'status'">
+      <form (ngSubmit)="searchByStatus()">
+        <mat-card-content>
+          <mat-form-field class="example-full-width" >
+            <mat-label>Search by Room Type</mat-label>
+            <mat-select [(value)]="roomStatusValue">
+              <mat-option value="Vacant">Vacant</mat-option>
+              <mat-option value="Occupied">Occupied</mat-option>
+              <mat-option value="Available Soon">Available Soon</mat-option>
+              <mat-option value="Booked">Booked</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block" type="submit">Search</button>
+      </form>
+    </div>
+
+  </mat-card>
+
+</div>

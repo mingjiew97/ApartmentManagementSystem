@@ -1,0 +1,14 @@
+<main>
+  <h2>File Upload Demo</h2>
+  <input type="file" #file (change)="onFileChange()">
+  <button mat-raised-button color="primary" (click)="upload()">Upload</button>
+  <mat-progress-bar mode="determinate" [value]="fus.progress$ | async"></mat-progress-bar>
+  <p>{{this.info}}</p>
+  <ul>
+    <li *ngFor="let f of fus.files$ | async">
+      <a href="{{f}}">{{f}}</a>
+    </li>
+  </ul>
+  <button (click)="getDocument()">Get Document</button>
+  <a href="{{document1}}">{{document1}}</a>
+</main>
